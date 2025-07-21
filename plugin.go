@@ -39,6 +39,7 @@ type (
 		FullName  string
 		Namespace string
 		Name      string
+		Link      string
 	}
 
 	// Commit information.

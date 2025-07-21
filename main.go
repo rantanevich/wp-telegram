@@ -141,6 +141,11 @@ func main() {
 			EnvVar: "DRONE_REPO_NAME",
 		},
 		cli.StringFlag{
+			Name:   "repo.link",
+			Usage:  "repository link",
+			EnvVar: "CI_REPO_URL",
+		},
+		cli.StringFlag{
 			Name:   "commit.sha",
 			Usage:  "git commit sha",
 			EnvVar: "DRONE_COMMIT_SHA,GITHUB_SHA",
@@ -216,7 +221,7 @@ func main() {
 		cli.Int64Flag{
 			Name:   "build.started",
 			Usage:  "build started",
-			EnvVar: "DRONE_STAGE_STARTED",
+			EnvVar: "CI_PIPELINE_STARTED",
 		},
 		cli.Int64Flag{
 			Name:   "build.finished",
@@ -283,6 +288,7 @@ func run(c *cli.Context) error {
 			FullName:  c.String("repo"),
 			Namespace: c.String("repo.namespace"),
 			Name:      c.String("repo.name"),
+			Link:      c.String("repo.link"),
 		},
 		Commit: Commit{
 			Sha:     c.String("commit.sha"),
